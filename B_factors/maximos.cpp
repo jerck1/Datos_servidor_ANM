@@ -98,13 +98,13 @@ double A15t[n][546];
 ifstream miFichero10("b_factor_16.csv");
 double A16[m][4];
 double A16t[n][546];
-ifstream miFichero11("b_factor_17.csv");
+ifstream miFichero110("b_factor_17.csv");
 double A17[m][4];
 double A17t[n][546];
-ifstream miFichero12("b_factor_18.csv");
+ifstream miFichero120("b_factor_18.csv");
 double A18[m][4];
 double A18t[n][546];
-ifstream miFichero13("b_factor_19.csv");
+ifstream miFichero130("b_factor_19.csv");
 double A19[m][4];
 double A19t[n][546];
 ifstream miFichero14("b_factor_20.csv");
@@ -166,19 +166,19 @@ for(int i=0;i<m;i++)
 miFichero10.close();
 for(int i=0;i<m;i++)
         for(int j=0;j<n;j++)
-                miFichero11>>A17[i][j];
+                miFichero110>>A17[i][j];
 //Se cierra el archivo porque sino se puede danar
-miFichero11.close();
+miFichero110.close();
 for(int i=0;i<m;i++)
         for(int j=0;j<n;j++)
-                miFichero12>>A18[i][j];
+                miFichero120>>A18[i][j];
 //Se cierra el archivo porque sino se puede danar
-miFichero8.close();
+miFichero120.close();
 for(int i=0;i<m;i++)
         for(int j=0;j<n;j++)
-                miFichero13>>A19[i][j];
+                miFichero130>>A19[i][j];
 //Se cierra el archivo porque sino se puede danar
-miFichero13.close();
+miFichero130.close();
 for(int i=0;i<m;i++)
         for(int j=0;j<n;j++)
                 miFichero14>>A20[i][j];
@@ -220,7 +220,7 @@ std::cout << "The largest b-factor for rc=7 and Ca is (Units of SD) " <<C[7][0]<
 ////////////////////////////////////////////////////////////////////////Ca mas Gal
 
 int m2=546;//546 con Ca+Gal
-ifstream miFichero110("b_factor_Ca_7_Gal_7.csv");
+ifstream miFichero11("b_factor_Ca_7_Gal_7.csv");
 double A7g[m2][4];
 double A7tg[n][546];
 ifstream miFichero21("b_factor_Ca_8_Gal_8.csv");
