@@ -19,10 +19,10 @@ for(int i=0;i<nm;i++)
 miFichero.close();
 //A continuacion se define la matriz de matrices A
 //Con dimensiones
-//14 es el numero de distancias de corte, por cada distancia de corte:
+//14 es el numero de distancias de corte. Por cada distancia de corte:
 // 4 tablas para Ca, Ca+Gal, Ca+Gal+Na, Ca+Na, por c/u de las 4 tablas:
 //    el numero de residuos y 4 columnas con el # de residuo, , , ,
-double A[14][4][2028][4]; 
+double A[14][4][1038][4];
 ////////////////////////////////////////////////////////////////////////con solo Ca
 ifstream FichCa[nm];
 int m=1012, n=4; //1012 con solo Ca
@@ -46,7 +46,7 @@ FichCa[13].open("b_factor_Ca_20.csv");
 for(int k=0;k<nm;k++){
 for(int i=0;i<m;i++){
 	for(int j=0;j<4;j++)
-		FichCa[k]>>A[0][0][i][j];
+		FichCa[k]>>A[k][0][i][j];
 	}
 FichCa[k].close();
 }
@@ -71,7 +71,7 @@ FichCaGal[13].open("b_factor_Ca_20_Gal_20.csv");
 for(int k=0;k<nm;k++){
 for(int i=0;i<m2;i++){
 	for(int j=0;j<4;j++)
-		FichCaGal[k]>>A[0][1][i][j];
+		FichCaGal[k]>>A[k][1][i][j];
 	}
 FichCaGal[k].close();
 }
@@ -96,9 +96,9 @@ FichCaNaGal[12].open("b_factor_Ca_19_Na_19_Gal_19.csv");
 FichCaNaGal[13].open("b_factor_Ca_20_Na_20_Gal_20.csv");
 
 for(int k=0;k<nm;k++){
-for(int i=0;i<m2;i++){
+for(int i=0;i<m3;i++){
 	for(int j=0;j<4;j++)
-		FichCaNaGal[k]>>A[0][2][i][j];
+		FichCaNaGal[k]>>A[k][2][i][j];
 	}
 FichCaNaGal[k].close();
 }
@@ -122,9 +122,9 @@ FichCaNa[11].open("b_factor_Ca_18_Na_18.csv");
 FichCaNa[12].open("b_factor_Ca_19_Na_19.csv");
 FichCaNa[13].open("b_factor_Ca_20_Na_20.csv");
 for(int k=0;k<nm;k++){
-for(int i=0;i<m2;i++){
+for(int i=0;i<m4;i++){
 	for(int j=0;j<4;j++)
-		FichCaNa[k]>>A[0][3][i][j];
+		FichCaNa[k]>>A[k][3][i][j];
 	}
 FichCaNa[k].close();
 }
@@ -152,14 +152,14 @@ miFichsal[12].open("n19.csv");
 miFichsal[13].open("n20.csv");
 //setw(): reserva para cada dato 10 lugares 
 /*
-Se guardan todos los datos de la cadena A; n=530
+Se guardan todos los datos de la cadena A; n=543
 A[0][0][i][0] numero de residuo
 A[0][j][i][3] factor b experimental para el residuo i, 
 con los sustratos j (0 para Ca, 1 para CaGal, 2 para CaGalNa, 3para CaNa)
 con distancia de corte r_0
-Indice k: r_k=7,8,...14
+Indice k: r_k=7,8,...20
 */
-for(int k=0;k<14;k++){
+for(int k=0;k<nm;k++){
 	for(int i=0;i<543;i++){ 
 		miFichsal[k]<<setw(10)<<A[k][0][i][0];
 			for(int j=0;j<4;j++)
