@@ -8,9 +8,13 @@ Los factores b tienen informacion referente los factores b calculados y los expe
 
 Los factores del sustrato y el ligando estan en los residuos:
 Para b_factor_Ca_ Na_Gal.csv
+Na1:530
 Na2:1038
 Gal1:518-529
-Gal2:1026-1037
-Para b_factor_Ca_ Na_Gal.csv
-518-529
-1026-1037
+Gal2:1026-1038
+Para b_factor_Ca_ Gal.csv
+Gal1: 518-529
+Gal2: 1025-1036
+Para b_factor_Ca_ Na.csv
+Na1: 518
+Na2: 1014
