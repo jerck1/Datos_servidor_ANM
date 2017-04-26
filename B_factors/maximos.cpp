@@ -681,7 +681,7 @@ ofstream miFichsal;
 miFichsal.open("max.csv");
 //setw(): reserva para cada dato 10 lugares 
 //Columnas de salida: Rc(A)    &&  Max b-factor
-for(int i=7;i<15;i++){
+for(int i=7;i<21;i++){
 	miFichsal<<setw(10)<<i<<" ";
 	miFichsal<<setw(10)<<*std::max_element(C[i],C[i]+4);
 	miFichsal<<endl;
