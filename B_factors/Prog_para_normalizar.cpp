@@ -41,7 +41,6 @@ FichCa[11].open("b_factor_Ca_18.csv");
 FichCa[12].open("b_factor_Ca_19.csv");
 FichCa[13].open("b_factor_Ca_20.csv");
 //////Entrada de datos
-
 //Es como un cin miFichero>>A[i][j];
 for(int k=0;k<nm;k++){
 for(int i=0;i<m;i++){
@@ -68,14 +67,22 @@ FichCaGal[11].open("b_factor_Ca_18_Gal_18.csv");
 FichCaGal[12].open("b_factor_Ca_19_Gal_19.csv");
 FichCaGal[13].open("b_factor_Ca_20_Gal_20.csv");
 
+int i1;
 for(int k=0;k<nm;k++){
-for(int i=0;i<m2;i++){
-	for(int j=0;j<4;j++)
-		FichCaGal[k]>>A[k][1][i][j];
+	i1=0;
+	while(i1<m2){
+		if(i1<519){
+			for(int j=0;j<4;j++)
+				FichCaGal[k]>>A[k][1][i1][j];
+		}else{
+			i1+=12;
+			for(int j=0;j<4;j++)
+				FichCaGal[k]>>A[k][1][i1][j];
+		}
+		i1++;			
 	}
 FichCaGal[k].close();
 }
-
 ////////////////////////////////////////////////////////////////////////Ca mas Gal mas Na
 
 int m3=1038;//1038 con Ca+Gal+Na
@@ -95,14 +102,22 @@ FichCaNaGal[11].open("b_factor_Ca_18_Na_18_Gal_18.csv");
 FichCaNaGal[12].open("b_factor_Ca_19_Na_19_Gal_19.csv");
 FichCaNaGal[13].open("b_factor_Ca_20_Na_20_Gal_20.csv");
 
+int i2;
 for(int k=0;k<nm;k++){
-for(int i=0;i<m3;i++){
-	for(int j=0;j<4;j++)
-		FichCaNaGal[k]>>A[k][2][i][j];
+	i2=0;
+	while(i2<m3){
+		if(i2<519){
+			for(int j=0;j<4;j++)
+				FichCaNaGal[k]>>A[k][2][i2][j];		
+		}else{
+			i2+=13;
+			for(int j=0;j<4;j++)
+				FichCaNaGal[k]>>A[k][2][i2][j];
+		}
+		i2++;			
 	}
 FichCaNaGal[k].close();
 }
-
 ////////////////////////////////////////////////////////////////////////Ca mas Na
 
 int m4=1014;//1014 con Ca+Na
@@ -121,10 +136,20 @@ FichCaNa[10].open("b_factor_Ca_17_Na_17.csv");
 FichCaNa[11].open("b_factor_Ca_18_Na_18.csv");
 FichCaNa[12].open("b_factor_Ca_19_Na_19.csv");
 FichCaNa[13].open("b_factor_Ca_20_Na_20.csv");
+
+int i3;
 for(int k=0;k<nm;k++){
-for(int i=0;i<m4;i++){
-	for(int j=0;j<4;j++)
-		FichCaNa[k]>>A[k][3][i][j];
+	i3=0;
+	while(i3<m4){
+		if(i3<519){
+			for(int j=0;j<4;j++)
+				FichCaNa[k]>>A[k][3][i3][j];		
+		}else{
+			i3+=1;
+			for(int j=0;j<4;j++)
+				FichCaNa[k]>>A[k][3][i3][j];
+		}
+		i3++;			
 	}
 FichCaNa[k].close();
 }
@@ -162,8 +187,8 @@ Indice k: r_k=7,8,...20
 for(int k=0;k<nm;k++){
 	for(int i=0;i<543;i++){ 
 		miFichsal[k]<<setw(10)<<A[k][0][i][0];
-			for(int j=0;j<4;j++)
-				miFichsal[k]<<"\t"<<setw(10)<<A[k][j][i][3]/M[k][1];
+		for(int j=0;j<4;j++)				
+			miFichsal[k]<<"\t"<<setw(10)<<A[k][j][i][3]/M[k][1];
 		miFichsal[k]<<endl;
 }
 miFichsal[k].close();
