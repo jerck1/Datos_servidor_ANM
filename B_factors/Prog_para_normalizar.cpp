@@ -23,6 +23,8 @@ miFichero.close();
 // 4 tablas para Ca, Ca+Gal, Ca+Gal+Na, Ca+Na, por c/u de las 4 tablas:
 //    el numero de residuos y 4 columnas con el # de residuo, , , ,
 double A[14][4][1038][4];
+//En B se almacenan los factores b de los sustratos y los ligandos
+double B[14][4][26][4];
 ////////////////////////////////////////////////////////////////////////con solo Ca
 ifstream FichCa[nm];
 int m=1012, n=4; //1012 con solo Ca
@@ -71,15 +73,19 @@ int i1;
 for(int k=0;k<nm;k++){
 	i1=0;
 	while(i1<m2){
-		if(i1<519){
+		if(i1<517){
 			for(int j=0;j<4;j++)
 				FichCaGal[k]>>A[k][1][i1][j];
 		}else{
-			i1+=12;
+			while(i1<529){
 			for(int j=0;j<4;j++)
-				FichCaGal[k]>>A[k][1][i1][j];
+			FichCaGal[k]>>B[k][1][i1-517][j];
+			i1++;
+			}
+			for(int j=0;j<4;j++)
+				FichCaGal[k]>>A[k][1][i1-12][j];
 		}
-		i1++;			
+		i1++;
 	}
 FichCaGal[k].close();
 }
@@ -106,18 +112,23 @@ int i2;
 for(int k=0;k<nm;k++){
 	i2=0;
 	while(i2<m3){
-		if(i2<519){
-			for(int j=0;j<4;j++)
-				FichCaNaGal[k]>>A[k][2][i2][j];		
-		}else{
-			i2+=13;
+		if(i2<517){
 			for(int j=0;j<4;j++)
 				FichCaNaGal[k]>>A[k][2][i2][j];
+		}else{
+			while(i2<530){
+			for(int j=0;j<4;j++)
+			FichCaNaGal[k]>>B[k][2][i2-517][j];
+			i2++;
+			}
+			for(int j=0;j<4;j++)
+				FichCaNaGal[k]>>A[k][2][i2-13][j];
 		}
-		i2++;			
+		i2++;
 	}
 FichCaNaGal[k].close();
 }
+
 ////////////////////////////////////////////////////////////////////////Ca mas Na
 
 int m4=1014;//1014 con Ca+Na
@@ -141,18 +152,24 @@ int i3;
 for(int k=0;k<nm;k++){
 	i3=0;
 	while(i3<m4){
-		if(i3<519){
-			for(int j=0;j<4;j++)
-				FichCaNa[k]>>A[k][3][i3][j];		
-		}else{
-			i3+=1;
+		if(i3<517){
 			for(int j=0;j<4;j++)
 				FichCaNa[k]>>A[k][3][i3][j];
+		}else{
+			while(i3<518){
+			for(int j=0;j<4;j++)
+			FichCaNa[k]>>B[k][3][i3-517][j];
+			i3++;
+			}
+			for(int j=0;j<4;j++){
+				FichCaNa[k]>>A[k][3][i3-1][j];
+			}
 		}
-		i3++;			
+		i3++;
 	}
 FichCaNa[k].close();
 }
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 
@@ -187,12 +204,18 @@ Indice k: r_k=7,8,...20
 for(int k=0;k<nm;k++){
 	for(int i=0;i<543;i++){ 
 		miFichsal[k]<<setw(10)<<A[k][0][i][0];
-		for(int j=0;j<4;j++)				
+		for(int j=0;j<4;j++)
 			miFichsal[k]<<"\t"<<setw(10)<<A[k][j][i][3]/M[k][1];
 		miFichsal[k]<<endl;
 }
 miFichsal[k].close();
 }
+for(int k=0;k<4;k++){
+for(int i=0;i<26;i++){
+for(int j=0;j<4;j++)
+cout<<B[1][k][i][j]<<"\t\t";
+cout<<endl;}
+cout<<endl<<endl;}
 //print
 /*for(int i=0;i<m;i++){
 	std::cout<<A[0][0][i][0]<<"\t\t"<<A[0][0][i][1]<<endl;
