@@ -12,6 +12,7 @@ using namespace std;
 //bubble sort
 
 const int a=546, Nrc=14;
+int s=7;//Numero de maximos que desea ver en la tabla
 void sort_matrix(double bfac[Nrc][4][a][2], int arraySize){
 //2 for externos para los indices # del residuo y si es Ca, Ca+Gal,...
 //2 for internos ordenan un array
@@ -34,7 +35,19 @@ for(int i = 0; i < arraySize; i++)
 	   }
 }
 }
+char* ptetabla(int j){
+char* p="%%Con solo Ca";
+char* q="%%Ca mas Gal";
+char* r="%%Ca mas Gal mas Na";
+char* t="%%Ca mas Na";
+ switch(j){
+	case 0: return p;
+	case 1: return q;
+	case 2: return r;
+	case 3: return t;
 
+}
+}
 int main () {
 //A continuacion se define la matriz de matrices A
 //Con dimensiones
@@ -206,12 +219,39 @@ for(int i=0;i<14;i++)
 			bfac[i][j][k][1]=A[i][j][k][3];
 }
 sort_matrix(bfac,a);
-cout<<"Maximos"<<endl;
-for(int i=0;i<10;i++)
-cout<<bfac[2][0][i][0]<<" "<<bfac[2][0][i][1]<<endl;
-cout<<"Minimos"<<endl;
-for(int i=540;i<546;i++)
-cout<<bfac[2][0][i][0]<<" "<<bfac[2][0][i][1]<<endl;
 
+//Enviar info a dos archivos planos (.tex)
+//off file stream
+ofstream lista_max;
+lista_max.open("lista_max.tex");
+lista_max<<"\\begin{tabular}[c]{|c|c|}\\hline"<<endl;
+lista_max<<"\\textbf{Residuo}&\\textbf{Factor B}\\hline"<<endl;
+///////////"10 primeros máximos"
+//No se usa la primera fila porque este no es un maximo, error en el programa
+for(int k=0;k<Nrc;k++){
+	lista_max<<"$R_c=$"<<k+7<<"$\\AA$"<<"& "<<endl;
+		for(int j=0;j<4;j++)
+			for(int i=1;i<s;i++)
+				lista_max<<setw(10)<<bfac[k][j][i][0]<<"&"<<setw(10)<<bfac[k][j][i][1]<<"\\\\"<<endl;
+}
+lista_max<<"\\end{tabular}"<<endl;
+lista_max.close();
+ofstream lista_min;
+//////////"10 minimos"
+//En el segundo for se agrega la primera fila olvidada arriba, que corresponde al minimo
+lista_min.open("lista_min.tex");
+lista_min<<"\\begin{tabular}[c]{|c|c|}\\hline"<<endl;
+lista_min<<"\\textbf{Residuo}&\\textbf{Factor B}\\hline"<<endl;
+for(int k=0;k<Nrc;k++){
+	lista_min<<"%$R_c=$"<<k+7<<"$\\AA$"<<"& "<<endl;
+		for(int j=0;j<4;j++){
+			lista_min<<ptetabla(j)<<endl;
+			for(int i=a-s+1;i<a;i++)
+				lista_min<<setw(10)<<bfac[k][j][i][0]<<"&"<<setw(10)<<bfac[k][j][i][1]<<"\\\\"<<endl;
+			lista_min<<setw(10)<<bfac[k][j][0][0]<<"&"<<setw(10)<<bfac[k][j][0][1]<<"\\\\"<<endl;
+		}
+}
+lista_min<<"\\end{tabular}"<<endl;
+lista_min.close();
 return 0;
 }
