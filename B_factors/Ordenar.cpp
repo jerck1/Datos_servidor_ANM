@@ -206,12 +206,12 @@ for(int i=0;i<14;i++)
 			bfac[i][j][k][1]=A[i][j][k][3];
 }
 sort_matrix(bfac,a);
-for(int i=520;i<546;i++)
+cout<<"Maximos"<<endl;
+for(int i=0;i<10;i++)
 cout<<bfac[2][0][i][0]<<" "<<bfac[2][0][i][1]<<endl;
-  // Funcion void que ordena mediante la libreria algorithm, los datos ordenados se guardan en el mismo array
-//for(int i=0;i<14;i++)
-//	for(int j=0;j<4;j++)
-//			std::sort(bfac[i][j][:][3], bfac+a);
+cout<<"Minimos"<<endl;
+for(int i=540;i<546;i++)
+cout<<bfac[2][0][i][0]<<" "<<bfac[2][0][i][1]<<endl;
 
 return 0;
 }
