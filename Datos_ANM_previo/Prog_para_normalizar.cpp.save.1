@@ -1,0 +1,116 @@
+#include <iostream>
+#include <cstdlib>
+#include <math.h>
+#include "fstream"
+#include "string"
+#include<iomanip>//para manipular el setw
+using namespace std;
+
+
+int ImpMat(int m, int n, double xy[][4]){
+ for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++)
+            cout<<xy[i][j]<<"\t";
+        cout<<endl;
+}
+}
+//Maximo de una lista
+#include <algorithm>    // std::min_element, std::max_element
+
+bool myfn(double i, double j) { return i<j; }
+
+struct myclass {
+  bool operator() (double i,double j) { return i<j; }
+} myobj;
+
+void trans(int m, int n, double A[][4],double At[][1980]){
+
+     for(int i=0;i<m;i++)
+
+             for(int j=0;j<n;j++)
+
+                     At[j][i]=A[i][j];
+}
+////////////////////////////////////////////////////////////////////////
+
+int main(){
+//Acepta el formato plano csv
+//input file stream "ifstream": Crea un archivo de entrada de solo lectura
+//miFichero("ruta")
+ifstream miFichero1("b_factor_7.csv");
+int m=1980, n=4, p=8; //1980 con solo Ca
+double A7[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_8.csv");
+double A8[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_9.csv");
+double A9[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_10.csv");
+double A10[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_11.csv");
+double A11[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_12.csv");
+double A12[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_13.csv");
+double A13[m][4];
+double A7t[n][1980];
+ifstream miFichero1("b_factor_14.csv");
+double A14[m][4];
+double A7t[n][1980];
+
+//////Entrada de datos
+//Es como un cin miFichero>>A[i][j];
+for(int i=0;i<m;i++)
+        for(int j=0;j<n;j++)
+                miFichero>>A7[i][j];
+//Se cierra el archivo porque sino se puede danar
+miFichero.close();
+trans(m,n,A7,A7t);
+trans(m,n,A8,A8t);
+trans(m,n,A9,A9t);
+trans(m,n,A10,A10t);
+trans(m,n,A11,A11t);
+trans(m,n,A12,A12t);
+trans(m,n,A13,A13t);
+trans(m,n,A14,A14t);
+////Esto es para escoger los valores maximo y minimo
+//int myints[][8]= {{3,7,2,5,6,4,9,76},{2,3,4,5,6,7,8,9}};
+
+  // using default comparison:
+  std::cout << "The smallest element is " << *std::min_element(A7t[3double A8t[m][4];
+],myints[0+8) << '\n';
+  std::cout << "The largest element is "  << *std::max_element(myints[0],myints[0]+8) << '\n';
+
+  // using function myfn as comp:
+  std::cout << "The smallest element is " << *std::min_element(myints[0],myints[0]+8,myfn) << '\n';
+  std::cout << "The largest element is "  << *std::max_element(myints[0],myints[0]+8,myfn) << '\n';
+
+  // using object myobj as comp:
+  std::cout << "The smallest element is " << *std::min_element(myints[0],myints[0]+8,myobj) << '\n';
+  std::cout << "The largest element is "  << *std::max_element(myints[0],myints[0]+8,myobj) << '\n';
+
+
+//Enviar info a un archivo plano
+//off file stream
+ofstream miFichero2;
+//miFichero2.open : Lo crea y lo abre
+miFichero2.open("normalizado.csv");
+//setw(): reserva para cada dato 10 lugares 
+
+for(int i=0;i<m;i++){
+	miFichero2<<setw(10)<<A[i][0]<<" ";
+        for(int j=1;j<4;j++)
+                miFichero2<<setw(10)<<A[i][j]/100<<" ";
+	miFichero2<<endl;
+        }
+miFichero2.close();
+//ImpMat(m,n,L);
+
+system("Pause");
+return 0;
+}
