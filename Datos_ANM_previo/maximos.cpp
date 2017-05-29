@@ -23,7 +23,7 @@ struct myclass {
   bool operator() (double i,double j) { return i<j; }
 } myobj;
 
-void trans(int m, int n, double A[][4],double At[][530]){
+void trans(int m, int n, double A[][4],double At[][498]){
 
      for(int i=0;i<m;i++)
 
@@ -31,7 +31,7 @@ void trans(int m, int n, double A[][4],double At[][530]){
 
                      At[j][i]=A[i][j];
 }
-void trans2(int m, int n, double A[][4],double At[][530]){
+void trans2(int m, int n, double A[][4],double At[][498]){
 
      for(int i=0;i<m;i++)
 
@@ -39,7 +39,7 @@ void trans2(int m, int n, double A[][4],double At[][530]){
 
                      At[j][i]=A[i][j];
 }
-void trans3(int m, int n, double A[][4],double At[][530]){
+void trans3(int m, int n, double A[][4],double At[][498]){
 
      for(int i=0;i<m;i++)
 
@@ -47,7 +47,7 @@ void trans3(int m, int n, double A[][4],double At[][530]){
 
                      At[j][i]=A[i][j];
 }
-void trans4(int m, int n, double A[][4],double At[][530]){
+void trans4(int m, int n, double A[][4],double At[][498]){
 
      for(int i=0;i<m;i++)
 
@@ -65,31 +65,31 @@ int main(){
 //donde se guardan los maximos en el orden: [Ca,CaGal,CaGalNa,CaNa], las filas son las distancias de corte(cuenta a partir de la 7ma fila)
 double C[15][4];
 ////////////////////////////////////////////////////////////////////////con solo Ca
-int m=530, n=4; //530 con solo Ca
-ifstream miFichero1("b_factor_7.csv");
+int m=545-47, n=4; //498 con solo Ca
+ifstream miFichero1("b_factor_Ca_7.csv");
 double A7[m][4];
-double A7t[n][530];
-ifstream miFichero2("b_factor_8.csv");
+double A7t[n][498];
+ifstream miFichero2("b_factor_Ca_8.csv");
 double A8[m][4];
-double A8t[n][530];
-ifstream miFichero3("b_factor_9.csv");
+double A8t[n][498];
+ifstream miFichero3("b_factor_Ca_9.csv");
 double A9[m][4];
-double A9t[n][530];
-ifstream miFichero4("b_factor_10.csv");
+double A9t[n][498];
+ifstream miFichero4("b_factor_Ca_10.csv");
 double A10[m][4];
-double A10t[n][530];
-ifstream miFichero5("b_factor_11.csv");
+double A10t[n][498];
+ifstream miFichero5("b_factor_Ca_11.csv");
 double A11[m][4];
-double A11t[n][530];
-ifstream miFichero6("b_factor_12.csv");
+double A11t[n][498];
+ifstream miFichero6("b_factor_Ca_12.csv");
 double A12[m][4];
-double A12t[n][530];
-ifstream miFichero7("b_factor_13.csv");
+double A12t[n][498];
+ifstream miFichero7("b_factor_Ca_13.csv");
 double A13[m][4];
-double A13t[n][530];
-ifstream miFichero8("b_factor_14.csv");
+double A13t[n][498];
+ifstream miFichero8("b_factor_Ca_14.csv");
 double A14[m][4];
-double A14t[n][530];
+double A14t[n][498];
 
 //////Entrada de datos
 
@@ -144,44 +144,44 @@ trans(m,n,A12,A12t);
 trans(m,n,A13,A13t);
 trans(m,n,A14,A14t);
 ////Esto es para escoger los valores maximo y minimo
-C[7][0]=*std::max_element(A7t[3],A7t[3]+530);
-C[8][0]=*std::max_element(A8t[3],A8t[3]+530);
-C[9][0]=*std::max_element(A9t[3],A9t[3]+530);
-C[10][0]=*std::max_element(A10t[3],A10t[3]+530);
-C[11][0]=*std::max_element(A11t[3],A11t[3]+530);
-C[12][0]=*std::max_element(A12t[3],A12t[3]+530);
-C[13][0]=*std::max_element(A13t[3],A13t[3]+530);
-C[14][0]=*std::max_element(A14t[3],A14t[3]+530);
+C[7][0]=*std::max_element(A7t[3],A7t[3]+498);
+C[8][0]=*std::max_element(A8t[3],A8t[3]+498);
+C[9][0]=*std::max_element(A9t[3],A9t[3]+498);
+C[10][0]=*std::max_element(A10t[3],A10t[3]+498);
+C[11][0]=*std::max_element(A11t[3],A11t[3]+498);
+C[12][0]=*std::max_element(A12t[3],A12t[3]+498);
+C[13][0]=*std::max_element(A13t[3],A13t[3]+498);
+C[14][0]=*std::max_element(A14t[3],A14t[3]+498);
 //Enviar info a un archivo plano
 std::cout << "The largest b-factor is (Units of SD) " <<C[7][0]<< '\n';
 
 ////////////////////////////////////////////////////////////////////////Ca mas Gal
 
-int m2=530;//530 con Ca+Gal
+int m2=498;//498 con Ca+Gal
 ifstream miFichero11("b_factor_Ca_7_Gal_7.csv");
 double A7g[m2][4];
-double A7tg[n][530];
+double A7tg[n][498];
 ifstream miFichero21("b_factor_Ca_8_Gal_8.csv");
 double A8g[m2][4];
-double A8tg[n][530];
+double A8tg[n][498];
 ifstream miFichero31("b_factor_Ca_9_Gal_9.csv");
 double A9g[m2][4];
-double A9tg[n][530];
+double A9tg[n][498];
 ifstream miFichero41("b_factor_Ca_10_Gal_10.csv");
 double A10g[m2][4];
-double A10tg[n][530];
+double A10tg[n][498];
 ifstream miFichero51("b_factor_Ca_11_Gal_11.csv");
 double A11g[m2][4];
-double A11tg[n][530];
+double A11tg[n][498];
 ifstream miFichero61("b_factor_Ca_12_Gal_12.csv");
 double A12g[m2][4];
-double A12tg[n][530];
+double A12tg[n][498];
 ifstream miFichero71("b_factor_Ca_13_Gal_13.csv");
 double A13g[m2][4];
-double A13tg[n][530];
+double A13tg[n][498];
 ifstream miFichero81("b_factor_Ca_14_Gal_14.csv");
 double A14g[m2][4];
-double A14tg[n][530];
+double A14tg[n][498];
 
 for(int i=0;i<m2;i++)
         for(int j=0;j<n;j++)
@@ -235,43 +235,43 @@ trans2(m,n,A14g,A14tg);
 
 
 ////Esto es para escoger los valores maximo y minimo
-C[7][1]=*std::max_element(A7tg[3],A7tg[3]+530);
-C[8][1]=*std::max_element(A8tg[3],A8tg[3]+530);
-C[9][1]=*std::max_element(A9tg[3],A9tg[3]+530);
-C[10][1]=*std::max_element(A10tg[3],A10tg[3]+530);
-C[11][1]=*std::max_element(A11tg[3],A11tg[3]+530);
-C[12][1]=*std::max_element(A12tg[3],A12tg[3]+530);
-C[13][1]=*std::max_element(A13tg[3],A13tg[3]+530);
-C[14][1]=*std::max_element(A14tg[3],A14tg[3]+530);
+C[7][1]=*std::max_element(A7tg[3],A7tg[3]+498);
+C[8][1]=*std::max_element(A8tg[3],A8tg[3]+498);
+C[9][1]=*std::max_element(A9tg[3],A9tg[3]+498);
+C[10][1]=*std::max_element(A10tg[3],A10tg[3]+498);
+C[11][1]=*std::max_element(A11tg[3],A11tg[3]+498);
+C[12][1]=*std::max_element(A12tg[3],A12tg[3]+498);
+C[13][1]=*std::max_element(A13tg[3],A13tg[3]+498);
+C[14][1]=*std::max_element(A14tg[3],A14tg[3]+498);
 std::cout << "The largest b-factor is (Units of SD) " <<C[7][1]<< '\n';
 
 ////////////////////////////////////////////////////////////////////////Ca mas Gal mas Na
 
-int m3=530;//530 con Ca+Gal+Na
+int m3=498;//498 con Ca+Gal+Na
 ifstream miFichero12("b_factor_Ca_7_Na_7_Gal_7.csv");
 double A7gn[m3][4];
-double A7tgn[n][530];
+double A7tgn[n][498];
 ifstream miFichero22("b_factor_Ca_8_Na_8_Gal_8.csv");
 double A8gn[m3][4];
-double A8tgn[n][530];
+double A8tgn[n][498];
 ifstream miFichero32("b_factor_Ca_9_Na_9_Gal_9.csv");
 double A9gn[m3][4];
-double A9tgn[n][530];
+double A9tgn[n][498];
 ifstream miFichero42("b_factor_Ca_10_Na_10_Gal_10.csv");
 double A10gn[m3][4];
-double A10tgn[n][530];
+double A10tgn[n][498];
 ifstream miFichero52("b_factor_Ca_11_Na_11_Gal_11.csv");
 double A11gn[m3][4];
-double A11tgn[n][530];
+double A11tgn[n][498];
 ifstream miFichero62("b_factor_Ca_12_Na_12_Gal_12.csv");
 double A12gn[m3][4];
-double A12tgn[n][530];
+double A12tgn[n][498];
 ifstream miFichero72("b_factor_Ca_13_Na_13_Gal_13.csv");
 double A13gn[m3][4];
-double A13tgn[n][530];
+double A13tgn[n][498];
 ifstream miFichero82("b_factor_Ca_14_Na_14_Gal_14.csv");
 double A14gn[m3][4];
-double A14tgn[n][530];
+double A14tgn[n][498];
 
 //el de R_c=7 se cambia por no tener todos sus valores definidos para Residuo>292
 for(int i=0;i<292;i++)//Ojo con este
@@ -330,43 +330,43 @@ trans3(m,n,A14gn,A14tgn);
 
 
 ////Esto es para escoger los valores maximo y minimo
-C[7][2]=*std::max_element(A7tgn[3],A7tgn[3]+530);
-C[8][2]=*std::max_element(A8tgn[3],A8tgn[3]+530);
-C[9][2]=*std::max_element(A9tgn[3],A9tgn[3]+530);
-C[10][2]=*std::max_element(A10tgn[3],A10tgn[3]+530);
-C[11][2]=*std::max_element(A11tgn[3],A11tgn[3]+530);
-C[12][2]=*std::max_element(A12tgn[3],A12tgn[3]+530);
-C[13][2]=*std::max_element(A13tgn[3],A13tgn[3]+530);
-C[14][2]=*std::max_element(A14tgn[3],A14tgn[3]+530);
+C[7][2]=*std::max_element(A7tgn[3],A7tgn[3]+498);
+C[8][2]=*std::max_element(A8tgn[3],A8tgn[3]+498);
+C[9][2]=*std::max_element(A9tgn[3],A9tgn[3]+498);
+C[10][2]=*std::max_element(A10tgn[3],A10tgn[3]+498);
+C[11][2]=*std::max_element(A11tgn[3],A11tgn[3]+498);
+C[12][2]=*std::max_element(A12tgn[3],A12tgn[3]+498);
+C[13][2]=*std::max_element(A13tgn[3],A13tgn[3]+498);
+C[14][2]=*std::max_element(A14tgn[3],A14tgn[3]+498);
 std::cout << "The largest b-factor is (Units of SD) " <<C[7][2]<< '\n';
 
 ////////////////////////////////////////////////////////////////////////Ca mas Na
 
-int m4=530;//530 con Ca+Na
-ifstream miFichero13("b_factor_CA_7_Na_7.csv");
+int m4=498;//498 con Ca+Na
+ifstream miFichero13("b_factor_Ca_7_Na_7.csv");
 double A7n[m4][4];
-double A7tn[n][530];
-ifstream miFichero23("b_factor_CA_8_Na_8.csv");
+double A7tn[n][498];
+ifstream miFichero23("b_factor_Ca_8_Na_8.csv");
 double A8n[m4][4];
-double A8tn[n][530];
-ifstream miFichero33("b_factor_CA_9_Na_9.csv");
+double A8tn[n][498];
+ifstream miFichero33("b_factor_Ca_9_Na_9.csv");
 double A9n[m4][4];
-double A9tn[n][530];
-ifstream miFichero43("b_factor_CA_10_Na_10.csv");
+double A9tn[n][498];
+ifstream miFichero43("b_factor_Ca_10_Na_10.csv");
 double A10n[m4][4];
-double A10tn[n][530];
-ifstream miFichero53("b_factor_CA_11_Na_11.csv");
+double A10tn[n][498];
+ifstream miFichero53("b_factor_Ca_11_Na_11.csv");
 double A11n[m4][4];
-double A11tn[n][530];
-ifstream miFichero63("b_factor_CA_12_Na_12.csv");
+double A11tn[n][498];
+ifstream miFichero63("b_factor_Ca_12_Na_12.csv");
 double A12n[m4][4];
-double A12tn[n][530];
-ifstream miFichero73("b_factor_CA_13_Na_13.csv");
+double A12tn[n][498];
+ifstream miFichero73("b_factor_Ca_13_Na_13.csv");
 double A13n[m4][4];
-double A13tn[n][530];
-ifstream miFichero83("b_factor_CA_14_Na_14.csv");
+double A13tn[n][498];
+ifstream miFichero83("b_factor_Ca_14_Na_14.csv");
 double A14n[m4][4];
-double A14tn[n][530];
+double A14tn[n][498];
 
 for(int i=0;i<m2;i++)//Ojo con este
         for(int j=0;j<n;j++)
@@ -420,14 +420,14 @@ trans4(m,n,A14n,A14tn);
 
 
 ////Esto es para escoger los valores maximo y minimo
-C[7][3]=*std::max_element(A7tn[3],A7tn[3]+530);
-C[8][3]=*std::max_element(A8tn[3],A8tn[3]+530);
-C[9][3]=*std::max_element(A9tn[3],A9tn[3]+530);
-C[10][3]=*std::max_element(A10tn[3],A10tn[3]+530);
-C[11][3]=*std::max_element(A11tn[3],A11tn[3]+530);
-C[12][3]=*std::max_element(A12tn[3],A12tn[3]+530);
-C[13][3]=*std::max_element(A13tn[3],A13tn[3]+530);
-C[14][3]=*std::max_element(A14tn[3],A14tn[3]+530);
+C[7][3]=*std::max_element(A7tn[3],A7tn[3]+498);
+C[8][3]=*std::max_element(A8tn[3],A8tn[3]+498);
+C[9][3]=*std::max_element(A9tn[3],A9tn[3]+498);
+C[10][3]=*std::max_element(A10tn[3],A10tn[3]+498);
+C[11][3]=*std::max_element(A11tn[3],A11tn[3]+498);
+C[12][3]=*std::max_element(A12tn[3],A12tn[3]+498);
+C[13][3]=*std::max_element(A13tn[3],A13tn[3]+498);
+C[14][3]=*std::max_element(A14tn[3],A14tn[3]+498);
 std::cout << "The largest b-factor is (Units of SD) " <<C[7][3]<< '\n';
 
 ///////////////////////////////////////////////////////////////////////////////////

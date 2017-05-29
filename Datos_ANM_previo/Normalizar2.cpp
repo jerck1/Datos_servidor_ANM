@@ -28,14 +28,14 @@ double B[8][4][29][4];
 ////////////////////////////////////////////////////////////////////////con solo Ca
 ifstream FichCa[nm];
 int m=1980, n=4; //1012 con solo Ca
-FichCa[0].open("b_factor_7.csv");
-FichCa[1].open("b_factor_8.csv");
-FichCa[2].open("b_factor_9.csv");
-FichCa[3].open("b_factor_10.csv");
-FichCa[4].open("b_factor_11.csv");
-FichCa[5].open("b_factor_12.csv");
-FichCa[6].open("b_factor_13.csv");
-FichCa[7].open("b_factor_14.csv");
+FichCa[0].open("b_factor_Ca_7.csv");
+FichCa[1].open("b_factor_Ca_8.csv");
+FichCa[2].open("b_factor_Ca_9.csv");
+FichCa[3].open("b_factor_Ca_10.csv");
+FichCa[4].open("b_factor_Ca_11.csv");
+FichCa[5].open("b_factor_Ca_12.csv");
+FichCa[6].open("b_factor_Ca_13.csv");
+FichCa[7].open("b_factor_Ca_14.csv");
 
 //////Entrada de datos
 //Es como un cin miFichero>>A[i][j];
@@ -47,7 +47,7 @@ for(int i=0;i<m;i++){
 FichCa[k].close();
 }
 ////////////////////////////////////////////////////////////////////////Ca mas Gal
-int m2=2028;//2028 con Ca+Gal debido a que se incluyen los atomos de la Gal
+int m2=2028;//1036 con Ca+Gal debido a que se incluyen los atomos de la Gal
 ifstream FichCaGal[nm];
 FichCaGal[0].open("b_factor_Ca_7_Gal_7.csv");
 FichCaGal[1].open("b_factor_Ca_8_Gal_8.csv");
@@ -58,30 +58,17 @@ FichCaGal[5].open("b_factor_Ca_12_Gal_12.csv");
 FichCaGal[6].open("b_factor_Ca_13_Gal_13.csv");
 FichCaGal[7].open("b_factor_Ca_14_Gal_14.csv");
 
-
-int i1;
 for(int k=0;k<nm;k++){
-	i1=0;
-	while(i1<m2){
-		if(i1<1980){
-			for(int j=0;j<4;j++)
-				FichCaGal[k]>>A[k][1][i1][j];
-		}else{
-			while(i1<2028){
-			for(int j=0;j<4;j++)
-			FichCaGal[k]>>B[k][1][i1-2028][j];
-			i1++;
-			}
-			for(int j=0;j<4;j++)
-				FichCaGal[k]>>A[k][1][i1-24][j];
-		}
-		i1++;
+for(int i=0;i<m2;i++){
+	for(int j=0;j<4;j++)
+		FichCaGal[k]>>A[k][1][i][j];
 	}
 FichCaGal[k].close();
 }
+
 ////////////////////////////////////////////////////////////////////////Ca mas Gal mas Na
 
-int m3=2032;//2032 con Ca+Gal+Na
+int m3=2032;//1038 con Ca+Gal+Na
 ifstream FichCaNaGal[nm];
 FichCaNaGal[0].open("b_factor_Ca_7_Na_7_Gal_7.csv");
 FichCaNaGal[1].open("b_factor_Ca_8_Na_8_Gal_8.csv");
@@ -92,65 +79,36 @@ FichCaNaGal[5].open("b_factor_Ca_12_Na_12_Gal_12.csv");
 FichCaNaGal[6].open("b_factor_Ca_13_Na_13_Gal_13.csv");
 FichCaNaGal[7].open("b_factor_Ca_14_Na_14_Gal_14.csv");
 
-
-int i2;
 for(int k=0;k<nm;k++){
-	i2=0;
-	while(i2<m3){
-		if(i2<1980){
-			for(int j=0;j<4;j++)
-				FichCaNaGal[k]>>A[k][2][i2][j];
-		}else{
-			while(i2<2032){
-			for(int j=0;j<4;j++)
-			FichCaNaGal[k]>>B[k][2][i2-2032][j];
-			i2++;
-			}
-			for(int j=0;j<4;j++)
-				FichCaNaGal[k]>>A[k][2][i2-28][j];
-		}
-		i2++;
+for(int i=0;i<m3;i++){
+	for(int j=0;j<4;j++)
+		FichCaNaGal[k]>>A[k][2][i][j];
 	}
 FichCaNaGal[k].close();
 }
 
 ////////////////////////////////////////////////////////////////////////Ca mas Na
 
-int m4=1984;//1984 con Ca+Na
+int m4=1984;//1014 con Ca+Na
 ifstream FichCaNa[nm];
-FichCaNa[0].open("b_factor_CA_7_Na_7.csv");
-FichCaNa[1].open("b_factor_CA_8_Na_8.csv");
-FichCaNa[2].open("b_factor_CA_9_Na_9.csv");
-FichCaNa[3].open("b_factor_CA_10_Na_10.csv");
-FichCaNa[4].open("b_factor_CA_11_Na_11.csv");
-FichCaNa[5].open("b_factor_CA_12_Na_12.csv");
-FichCaNa[6].open("b_factor_CA_13_Na_13.csv");
-FichCaNa[7].open("b_factor_CA_14_Na_14.csv");
+FichCaNa[0].open("b_factor_Ca_7_Na_7.csv");
+FichCaNa[1].open("b_factor_Ca_8_Na_8.csv");
+FichCaNa[2].open("b_factor_Ca_9_Na_9.csv");
+FichCaNa[3].open("b_factor_Ca_10_Na_10.csv");
+FichCaNa[4].open("b_factor_Ca_11_Na_11.csv");
+FichCaNa[5].open("b_factor_Ca_12_Na_12.csv");
+FichCaNa[6].open("b_factor_Ca_13_Na_13.csv");
+FichCaNa[7].open("b_factor_Ca_14_Na_14.csv");
 
-int i3;
 for(int k=0;k<nm;k++){
-	i3=0;
-	while(i3<m4){
-		if(i3<1980){
-			for(int j=0;j<4;j++)
-				FichCaNa[k]>>A[k][3][i3][j];
-		}else{
-			while(i3<1984){
-			for(int j=0;j<4;j++)
-			FichCaNa[k]>>B[k][3][i3-1984][j];
-			i3++;
-			}
-			for(int j=0;j<4;j++){
-				FichCaNa[k]>>A[k][3][i3-4][j];
-			}
-		}
-		i3++;
+for(int i=0;i<m4;i++){
+	for(int j=0;j<4;j++)
+		FichCaNa[k]>>A[k][3][i][j];
 	}
 FichCaNa[k].close();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-
 
 //Enviar informacion a un archivo plano de salida
 //off file stream
